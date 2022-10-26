@@ -13,6 +13,11 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
+    }
     buildFeatures {
         compose = true
     }
@@ -24,19 +29,17 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
 }
 
 dependencies {
     implementation(project(":shared"))
+    implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.compose.ui:ui:1.2.1")
     implementation("androidx.compose.ui:ui-tooling:1.2.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
     implementation("androidx.compose.foundation:foundation:1.2.1")
     implementation("androidx.compose.material:material:1.2.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.navigation:navigation-compose:2.4.1")
 }
