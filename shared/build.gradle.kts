@@ -48,6 +48,7 @@ kotlin {
 
 android {
     namespace = "com.poddlybonk.organize"
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     compileSdk = 32
     defaultConfig {
         minSdk = 29
