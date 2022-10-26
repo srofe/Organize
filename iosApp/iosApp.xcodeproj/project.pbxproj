@@ -78,7 +78,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+				F4344720290935510084CCDE /* Supporting Files */,
 				F434471929091CF10084CCDE /* UI */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -118,6 +118,14 @@
 				F434471D29091E900084CCDE /* RemindersView.swift */,
 			);
 			path = Reminders;
+			sourceTree = "<group>";
+		};
+		F4344720290935510084CCDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
