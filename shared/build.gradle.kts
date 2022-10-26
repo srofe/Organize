@@ -16,6 +16,8 @@ kotlin {
         }
     }
 
+    jvm("desktop")
+
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -42,6 +44,9 @@ kotlin {
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
+        }
+        val desktopMain by getting {
+            dependsOn(commonMain)
         }
     }
 }
