@@ -1,7 +1,5 @@
 package com.poddlybonk.organize
 
-interface Platform {
-    val name: String
+expect class Platform() {
+    val platform: String
 }
-
-expect fun getPlatform(): Platform
