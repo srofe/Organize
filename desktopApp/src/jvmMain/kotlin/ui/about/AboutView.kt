@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.poddlybonk.organize.Platform
-import kotlinx.coroutines.internal.PrepareOp
 
 @Composable
 fun AboutView() {

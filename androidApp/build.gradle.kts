@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.compose.ui:ui:1.2.1")
     implementation("androidx.compose.ui:ui-tooling:1.2.1")
