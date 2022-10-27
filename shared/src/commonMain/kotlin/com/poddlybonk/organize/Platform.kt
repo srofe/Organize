@@ -1,5 +1,17 @@
 package com.poddlybonk.organize
 
 expect class Platform() {
-    val platform: String
+    val osName: String
+    val osVersion: String
+    val deviceModel: String
+    val cpuType: String
+    val screen: ScreenInfo?
+
+    fun logSystemInfo()
+}
+
+expect class ScreenInfo() {
+    val width: Int
+    val height: Int
+    val density: Int
 }
