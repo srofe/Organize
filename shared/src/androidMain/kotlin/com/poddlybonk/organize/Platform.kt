@@ -13,10 +13,7 @@ actual class Platform actual constructor() {
     actual val screen: ScreenInfo? = ScreenInfo()
 
     actual fun logSystemInfo() {
-        Log.d(
-            "Platform",
-            "($osName; $osVersion; $deviceModel; ${screen!!.width}x${screen!!.height}@${screen!!.density}x; $cpuType)"
-        )
+        Log.d("Platform", deviceInfo)
     }
 }
 

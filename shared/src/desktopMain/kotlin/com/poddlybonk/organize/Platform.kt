@@ -8,7 +8,7 @@ actual class Platform actual constructor() {
     actual val screen: ScreenInfo? = null
 
     actual fun logSystemInfo() {
-        print("($osName; $osVersion; $deviceModel; $cpuType)")
+        print(deviceInfo)
     }
 }
 
