@@ -13,6 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.poddlybonk.organize.Platform
+import com.poddlybonk.organize.logSystemInfo
+import kotlin.math.max
+import kotlin.math.min
 
 @Composable
 fun AboutView() {
@@ -34,23 +37,19 @@ private fun ContentView() {
 
 private fun makeItems(): List<Pair<String, String>> {
     val platform = Platform()
-
+    platform.logSystemInfo()
     val items = mutableListOf<Pair<String, String>>(
-        // UNCOMMENT AFTER CREATING THE PLATFORM CLASS
-
-        //    Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
-        //    Pair("Device", platform.deviceModel),
-        //    Pair("CPU", platform.cpuType)
+        Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
+        Pair("Device", platform.deviceModel),
+        Pair("CPU", platform.cpuType)
     )
 
-    // UNCOMMENT AFTER CREATING THE PLATFORM CLASS
+    platform.screen?.let {
+        val max = max(it.width, it.height)
+        val min = min(it.width, it.height)
 
-//    platform.screen?.let {
-//        val max = max(it.width, it.height)
-//        val min = min(it.width, it.height)
-//
-//        items.add(Pair("Display", "${max}×${min} @${it.density}x"))
-//    }
+        items.add(Pair("Display", "${max}×${min} @${it.density}x"))
+    }
 
     return items
 }
