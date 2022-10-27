@@ -13,7 +13,7 @@ struct AboutView: View {
 
     var body: some View {
         NavigationView {
-            Text("Hello World!")
+            AboutListView()
                 .navigationTitle("About Device")
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
