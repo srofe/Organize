@@ -6,8 +6,6 @@ expect class Platform() {
     val deviceModel: String
     val cpuType: String
     val screen: ScreenInfo?
-
-    fun logSystemInfo()
 }
 
 expect class ScreenInfo() {
@@ -24,4 +22,8 @@ get() {
     }
     result += "$cpuType)"
     return result
+}
+
+fun Platform.logSystemInfo() {
+    Logger.log(deviceInfo, "Platform", LogLevel.DEBUG)
 }

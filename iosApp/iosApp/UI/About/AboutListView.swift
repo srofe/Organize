@@ -4,6 +4,7 @@ import shared
 struct AboutListView: View {
     private let items: [RowItem] = {
         let platform = Platform()
+        platform.logSystemInfo()
         var result: [RowItem] = [
             RowItem(title: "Operating System", subtitle: "\(platform.osName) \(platform.osVersion)"),
             RowItem(title: "Device", subtitle: platform.deviceModel),

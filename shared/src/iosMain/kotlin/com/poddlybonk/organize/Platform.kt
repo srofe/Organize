@@ -5,7 +5,6 @@ import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.ptr
 import platform.CoreGraphics.CGRectGetHeight
 import platform.CoreGraphics.CGRectGetWidth
-import platform.Foundation.NSLog
 import platform.Foundation.NSString
 import platform.Foundation.NSUTF8StringEncoding
 import platform.Foundation.stringWithCString
@@ -33,10 +32,6 @@ actual class Platform actual constructor() {
         }
     actual val cpuType = kotlin.native.Platform.cpuArchitecture.name
     actual val screen: ScreenInfo? = ScreenInfo()
-
-    actual fun logSystemInfo() {
-        NSLog(deviceInfo)
-    }
 }
 
 actual class ScreenInfo actual constructor() {
