@@ -43,6 +43,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIColorName</key>
+		<string>rwdevcon-bg</string>
+		<key>UIImageName</key>
+		<string>rw-logo</string>
+	</dict>
 </dict>
 </plist>

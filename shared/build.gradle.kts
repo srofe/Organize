@@ -16,6 +16,8 @@ kotlin {
         }
     }
 
+    jvm("desktop")
+
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -43,11 +45,15 @@ kotlin {
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
+        val desktopMain by getting {
+            dependsOn(commonMain)
+        }
     }
 }
 
 android {
     namespace = "com.poddlybonk.organize"
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     compileSdk = 32
     defaultConfig {
         minSdk = 29
