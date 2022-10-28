@@ -14,6 +14,8 @@
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		F434471B29091D9B0084CCDE /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434471A29091D9B0084CCDE /* AboutView.swift */; };
 		F434471E29091E900084CCDE /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434471D29091E900084CCDE /* RemindersView.swift */; };
+		F4EF3AB8290BA5B200727F31 /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3AB7290BA5B200727F31 /* ReminderItem.swift */; };
+		F4EF3ABA290BA73600727F31 /* NewReminderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3AB9290BA73600727F31 /* NewReminderTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,8 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F434471A29091D9B0084CCDE /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F434471D29091E900084CCDE /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		F4EF3AB7290BA5B200727F31 /* ReminderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
+		F4EF3AB9290BA73600727F31 /* NewReminderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				F434471D29091E900084CCDE /* RemindersView.swift */,
+				F4EF3AB7290BA5B200727F31 /* ReminderItem.swift */,
+				F4EF3AB9290BA73600727F31 /* NewReminderTextField.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -224,9 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F4EF3ABA290BA73600727F31 /* NewReminderTextField.swift in Sources */,
 				F434471B29091D9B0084CCDE /* AboutView.swift in Sources */,
 				F434471E29091E900084CCDE /* RemindersView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				F4EF3AB8290BA5B200727F31 /* ReminderItem.swift in Sources */,
 				685F06A4D3D81D978F893DCC /* AboutListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
