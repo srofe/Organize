@@ -24,7 +24,7 @@ fun main() {
                 onCloseRequest = ::exitApplication
             ) {
                 RemindersView(
-                    onAboutIconClick = { screenState = Screen.AboutDevice }
+                    onAboutButtonClick = { screenState = Screen.AboutDevice }
                 )
             }
 
