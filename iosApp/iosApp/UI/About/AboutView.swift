@@ -7,13 +7,17 @@
 //
 
 import SwiftUI
+import shared
+
+extension AboutViewModel: ObservableObject {}
 
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = AboutViewModel()
 
     var body: some View {
         NavigationView {
-            AboutListView()
+            AboutListView(items: viewModel.items)
                 .navigationTitle("About Device")
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
