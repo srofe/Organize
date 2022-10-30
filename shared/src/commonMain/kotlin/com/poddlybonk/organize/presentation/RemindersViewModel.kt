@@ -16,7 +16,7 @@ class RemindersViewModel : BaseViewModel() {
     fun createReminder(title: String) {
         val trimmed = title.trim()
         if (trimmed.isNotEmpty()) {
-            repository.createReminder(trimmed)
+            repository.createReminder(title = trimmed)
             onRemindersUpdated?.invoke(reminders)
         }
     }
