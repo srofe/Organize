@@ -1,13 +1,16 @@
 package ui.reminders
 
+import androidx.compose.foundation.clickable
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -22,14 +25,17 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import com.poddlybonk.organize.domain.Reminder
+import com.poddlybonk.organize.presentation.RemindersViewModel
 
 @Composable
 fun RemindersView(
+    viewModel: RemindersViewModel = RemindersViewModel(),
     onAboutButtonClick: () -> Unit
 ) {
     Column {
         Toolbar(onAboutButtonClick = onAboutButtonClick)
-        ContentView()
+        ContentView(viewModel = viewModel)
     }
 }
 
@@ -51,12 +57,41 @@ private fun Toolbar(
 }
 
 @Composable
-private fun ContentView() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Hello World!")
+private fun ContentView(viewModel: RemindersViewModel) {
+    var textFieldValue by remember { mutableStateOf("") }
+    var reminders by remember {
+        mutableStateOf(listOf<Reminder>(), policy = neverEqualPolicy())
+    }
+
+    viewModel.onRemindersUpdated = { reminders = it }
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(items = reminders) { item ->
+            val onItemClick = {
+                viewModel.markReminder(id = item.id, isCompleted = !item.isCompleted)
+            }
+            ReminderItem(
+                title = item.title,
+                isCompleted = item.isCompleted,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(enabled = true, onClick = onItemClick)
+                    .padding(horizontal = 16.dp, vertical = 4.dp)
+            )
+        }
+        item {
+            val onSubmit = {
+                viewModel.createReminder(title = textFieldValue)
+                textFieldValue = ""
+            }
+            NewReminderTextField(
+                value = textFieldValue,
+                onValueChange = { textFieldValue = it },
+                onSubmit = onSubmit,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp, horizontal = 16.dp)
+            )
+        }
     }
 }
 
