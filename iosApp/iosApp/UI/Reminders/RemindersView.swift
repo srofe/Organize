@@ -40,7 +40,7 @@ struct RemindersView: View {
                         .focused($shouldFocusOnTextField)
             }
         }
-        .navigationTitle("Reminders")
+        .navigationTitle(viewModelWrapper.viewModel.title)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()

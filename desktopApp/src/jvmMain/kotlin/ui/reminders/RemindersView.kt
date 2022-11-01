@@ -34,17 +34,18 @@ fun RemindersView(
     onAboutButtonClick: () -> Unit
 ) {
     Column {
-        Toolbar(onAboutButtonClick = onAboutButtonClick)
+        Toolbar(title = viewModel.title, onAboutButtonClick = onAboutButtonClick)
         ContentView(viewModel = viewModel)
     }
 }
 
 @Composable
 private fun Toolbar(
+    title: String,
     onAboutButtonClick: () -> Unit
 ) {
     TopAppBar(
-        title = { Text(text = "Reminders") },
+        title = { Text(text = title) },
         actions = {
             IconButton(onClick = onAboutButtonClick) {
                 Icon(

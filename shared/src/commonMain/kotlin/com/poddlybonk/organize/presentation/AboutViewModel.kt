@@ -7,6 +7,7 @@ import kotlin.math.min
 class AboutViewModel: BaseViewModel() {
     private val platform = Platform()
     val items: List<RowItem> = makeRowItems(platform)
+    val title: String = "About Device"
 
     private fun makeRowItems(platform: Platform): List<RowItem> {
         val rowItems = mutableListOf(
