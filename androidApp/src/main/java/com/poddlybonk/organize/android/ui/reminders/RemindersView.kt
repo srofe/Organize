@@ -15,11 +15,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -64,11 +67,19 @@ private fun ContentView(viewModel: RemindersViewModel) {
     var reminders by remember {
         mutableStateOf(listOf<Reminder>(), policy = neverEqualPolicy())
     }
+    val focusManager = LocalFocusManager.current
+    val focusRequester = FocusRequester.Default
+    var shouldFocusOnTextField by remember { mutableStateOf(false) }
 
     viewModel.onRemindersUpdated = { reminders = it }
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 4.dp, bottom = 8.dp)
+    ) {
         items(items = reminders) { item ->
             val onItemClick = {
+                focusManager.clearFocus()
                 viewModel.markReminder(id = item.id, isCompleted = !item.isCompleted)
             }
             ReminderItem(
@@ -84,6 +95,7 @@ private fun ContentView(viewModel: RemindersViewModel) {
             val onSubmit = {
                 viewModel.createReminder(title = textFieldValue)
                 textFieldValue = ""
+                shouldFocusOnTextField = true
             }
             NewReminderTextField(
                 value = textFieldValue,
@@ -92,7 +104,14 @@ private fun ContentView(viewModel: RemindersViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp, horizontal = 16.dp)
+                    .focusRequester(focusRequester)
             )
+            LaunchedEffect(reminders) {
+                if (shouldFocusOnTextField) {
+                    focusRequester.requestFocus()
+                    shouldFocusOnTextField = false
+                }
+            }
         }
     }
 }
