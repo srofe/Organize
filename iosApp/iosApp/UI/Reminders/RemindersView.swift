@@ -7,11 +7,48 @@
 //
 
 import SwiftUI
+import shared
 
 struct RemindersView: View {
+    @StateObject private var viewModelWrapper = RemindersViewModelWrapper()
+    @State private var textFieldValue = ""
+    @FocusState private var shouldFocusOnTextField: Bool
+
     var body: some View {
-        Text("Hello World!")
-            .navigationTitle("Reminders")
+        List {
+            if !viewModelWrapper.reminders.isEmpty {
+                Section {
+                    ForEach(viewModelWrapper.reminders, id: \.id) { item in
+                        ReminderItem(title: item.title, isCompleted: item.isCompleted)
+                                .onTapGesture {
+                                    withAnimation {
+                                        viewModelWrapper.viewModel.markReminder(id: item.id, isCompleted: !item.isCompleted)
+                                        shouldFocusOnTextField = false
+                                    }
+                                }
+                    }
+                }
+            }
+            Section {
+                NewReminderTextField(text: $textFieldValue) {
+                    withAnimation {
+                        viewModelWrapper.viewModel.createReminder(title: textFieldValue)
+                        textFieldValue = ""
+                        shouldFocusOnTextField = true
+                    }
+                }
+                        .focused($shouldFocusOnTextField)
+            }
+        }
+        .navigationTitle(viewModelWrapper.viewModel.title)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    shouldFocusOnTextField = false
+                }
+            }
+        }
     }
 }
 

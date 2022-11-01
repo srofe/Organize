@@ -12,46 +12,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.poddlybonk.organize.Platform
-import com.poddlybonk.organize.logSystemInfo
-import kotlin.math.max
-import kotlin.math.min
+import com.poddlybonk.organize.presentation.AboutViewModel
 
 @Composable
-fun AboutView() {
-    ContentView()
+fun AboutView(viewModel: AboutViewModel = AboutViewModel()) {
+    ContentView(items = viewModel.items)
 }
 
 @Composable
-private fun ContentView() {
-    val items = makeItems()
-
+private fun ContentView(items: List<AboutViewModel.RowItem>) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
         items(items) { row ->
-            RowView(title = row.first, subtitle = row.second)
+            RowView(title = row.title, subtitle = row.subtitle)
         }
     }
-}
-
-private fun makeItems(): List<Pair<String, String>> {
-    val platform = Platform()
-    platform.logSystemInfo()
-    val items = mutableListOf<Pair<String, String>>(
-        Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
-        Pair("Device", platform.deviceModel),
-        Pair("CPU", platform.cpuType)
-    )
-
-    platform.screen?.let {
-        val max = max(it.width, it.height)
-        val min = min(it.width, it.height)
-
-        items.add(Pair("Display", "${max}×${min} @${it.density}x"))
-    }
-
-    return items
 }
 
 @Composable
