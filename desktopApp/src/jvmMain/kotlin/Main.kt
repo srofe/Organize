@@ -9,6 +9,7 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.poddlybonk.organize.presentation.Screen
 import ui.about.AboutView
+import ui.about.AboutWindow
 import ui.reminders.RemindersView
 import ui.theme.AppTheme
 
@@ -29,15 +30,8 @@ fun main() {
             }
 
             if (screenState == Screen.AboutDevice) {
-                Window(
-                    title = "About Device",
-                    state = WindowState(width = 300.dp, height = 450.dp),
-                    resizable = true,
-                    onCloseRequest = {
-                        screenState = Screen.Reminders
-                    }
-                ) {
-                    AboutView()
+                AboutWindow {
+                    screenState = Screen.Reminders
                 }
             }
         }
