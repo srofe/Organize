@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
-import androidx.compose.ui.window.rememberWindowState
 import com.poddlybonk.organize.presentation.AboutViewModel
 
 @Composable
