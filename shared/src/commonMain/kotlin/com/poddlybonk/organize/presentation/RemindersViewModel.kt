@@ -12,6 +12,7 @@ class RemindersViewModel : BaseViewModel() {
             field = value
             onRemindersUpdated?.invoke(reminders)
         }
+    val title: String = "Reminders"
 
     fun createReminder(title: String) {
         val trimmed = title.trim()
