@@ -3,6 +3,7 @@ package ui.about
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.rememberWindowState
 import com.poddlybonk.organize.presentation.AboutViewModel
 
@@ -10,7 +11,7 @@ import com.poddlybonk.organize.presentation.AboutViewModel
 fun AboutWindow(viewModel: AboutViewModel = AboutViewModel(), onCloseRequest: () -> Unit) {
     Window(
         title = viewModel.title,
-        state = rememberWindowState(width = 300.dp, height = 450.dp),
+        state = WindowState(width = 300.dp, height = 450.dp),
         resizable = true,
         onCloseRequest = onCloseRequest
     ) {
