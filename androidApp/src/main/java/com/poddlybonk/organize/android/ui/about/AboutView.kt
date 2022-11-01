@@ -14,11 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.poddlybonk.organize.Platform
-import com.poddlybonk.organize.logSystemInfo
 import com.poddlybonk.organize.presentation.AboutViewModel
-import kotlin.math.max
-import kotlin.math.min
 
 @Composable
 fun AboutView(
@@ -26,15 +22,15 @@ fun AboutView(
     onUpButtonClick: () -> Unit
 ) {
     Column {
-        Toolbar(onUpButtonClick = onUpButtonClick)
+        Toolbar(title = viewModel.title, onUpButtonClick = onUpButtonClick)
         ContentView(items = viewModel.items)
     }
 }
 
 @Composable
-private fun Toolbar(onUpButtonClick: () -> Unit) {
+private fun Toolbar(title: String, onUpButtonClick: () -> Unit) {
     TopAppBar(
-        title = { Text(text = "About Device") },
+        title = { Text(text = title) },
         navigationIcon = {
             IconButton(onClick = onUpButtonClick) {
                 Icon(
