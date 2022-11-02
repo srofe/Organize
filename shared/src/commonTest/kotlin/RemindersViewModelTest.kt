@@ -23,4 +23,16 @@ class RemindersViewModelTest {
             message = "Reminder with title: $title wasn't created."
         )
     }
+
+    @Test
+    fun testToggleReminderItem() {
+        val title = "New Item"
+        viewModel.createReminder(title)
+        val item = viewModel.reminders.first()
+        viewModel.markReminder(id = item.id, isCompleted = true)
+        assertTrue(
+            actual = viewModel.reminders.first().isCompleted,
+            message = "Reminder with title: $title should be completed."
+        )
+    }
 }
