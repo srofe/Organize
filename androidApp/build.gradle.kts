@@ -8,6 +8,7 @@ android {
     compileSdk = 32
     defaultConfig {
         applicationId = "com.poddlybonk.organize.android"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         minSdk = 29
         targetSdk = 32
         versionCode = 1
@@ -43,4 +44,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.5.1")
     implementation("androidx.navigation:navigation-compose:2.4.1")
+    androidTestImplementation(
+        "androidx.compose.ui:ui-test-junit4:1.2.0"
+    )
+    debugImplementation(
+        "androidx.compose.ui:ui-test-manifest:1.2.0"
+    )
+    androidTestImplementation("androidx.fragment:fragment-testing:1.5.4")
+    androidTestImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test:runner:1.4.0")
 }
